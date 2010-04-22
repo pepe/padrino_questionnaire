@@ -1,0 +1,52 @@
+%h2 Dotazník II. část
+
+#wrapper
+  - form_for @sheet, "/save_second/#{params[:uid]}", :method => :post do |f|
+    - field_set_tag do
+      %ol{:start => "5"}
+        %li
+          %label{:for => :once_payment} Kolik byste byli ochotni zaplatit peněz za jednorázovou návštěvu Vašeho oblíbeného lesa, aniž byste se jí vzdali?
+          %br
+          = f.text_field :once_payment
+        %li
+          %label{:for => :once_receive} Jakou částku byste byli ochotni jednorázově přijmout výměnou za trvalé znemožnění návštěvy Vašeho oblíbeného lesa?
+          %br
+          = f.text_field :once_receive
+        %li
+          Jaká je podle vás významnost funkcí lesa v České republice?
+          %br
+          = f.select :important_wood, :options => ['---'] + (1..5).to_a
+          %label{:for => :important_wood} produkce a využití dříví 
+          %br
+          = f.select :important_gathering, :options => ['---'] + (1..5).to_a
+          %label{:for => :important_gathering} produkce a sběr lesních plodin (včetně hub a léčivých rostlin)
+          %br
+          = f.select :important_water, :options => ['---'] + (1..5).to_a
+          %label{:for => :important_water} vodohospodářské funkce
+          %br
+          = f.select :important_ground, :options => ['---'] + (1..5).to_a
+          %label{:for => :important_ground} půdoochranné funkce
+          %br
+          = f.select :important_climate, :options => ['---'] + (1..5).to_a
+          %label{:for => :important_climate} klimatické funkce
+          %br
+          = f.select :important_health, :options => ['---'] + (1..5).to_a
+          %label{:for => :important_health} zdravotně hygienické funkce (rekreační, zdravotní)
+          %br
+          = f.select :important_nature, :options => ['---'] + (1..5).to_a
+          %label{:for => :important_nature} přírodoochranné funkce
+          %br
+        %li
+          Jaký je váš vztah k České zemědělské univerzitě v Praze?
+          %br
+          = f.radio_button :relation_employee, :name => 'sheet[relation]', :value => 'jsem zaměstnanec/zaměstnankyně'
+          %label{:for => :relation_employee} jsem zaměstnanec/zaměstnankyně
+          %br
+          = f.radio_button :relation_student, :name => 'sheet[relation]', :value => 'jsem student/studentka'
+          %label{:for => :relation_student} jsem student/studentka
+          %br
+          = f.radio_button :relation_none, :name => 'sheet[relation]', :value => 'žádný'
+          %label{:for => :relation_none} žádný
+          %br
+      = f.submit 'Odeslat II. část', :class => 'button'
+

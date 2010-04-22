@@ -1,0 +1,56 @@
+%h2 Dotazník I. část
+
+#wrapper
+  - form_for @sheet, "/save_first/#{params[:uid]}", :method => :post do |f|
+    - field_set_tag do
+      %ol
+        %li
+          Jak často navštěvujete les v průměru ročně?
+          %br
+          = f.radio_button :frequency_none, :name => 'sheet[frequency]', :value => 'vůbec'
+          %label{:for => :frequency_none} 'vůbec'
+          %br
+          = f.radio_button :frequency_yearly, :name => 'sheet[frequency]', :value => '1 až 2 x ročně'
+          %label{:for => :frequency_yearly} '1 až 2 x ročně'
+          %br
+          = f.radio_button :frequency_monthly, :name => 'sheet[frequency]', :value => '1 x měsíčně'
+          %label{:for => :frequency_monthly} '1 x měsíčně'
+          %br
+          = f.radio_button :frequency_weekly, :name => 'sheet[frequency]', :value => '1 x týdně'
+          %label{:for => :frequency_weekly} '1 x týdně'
+          %br
+          = f.radio_button :frequency_daily, :name => 'sheet[frequency]', :value => '2 až 3 x týdně'
+          %label{:for => :frequency_daily} '2 až 3 x týdně'
+          %br
+          %label{:for => 'frequency_other'} Jinak často
+          = f.text_field :frequency_other
+          prosím vypište
+        %li
+          %label{:for => 'time_spent'} Jak dlouhou dobu obvykle trávíte návštěvou lesa?
+          %br
+          prosím vypište
+          = f.text_field :time_spent
+          hodin
+        %li
+          Za jakým účelem obvykle navštěvujete les?
+          prosím určete významnost od nejvyšší 5 po nejnižší 1
+          %br
+          = f.select :purpose_relaxation, :options => ['---'] + (1..5).to_a
+          %label(for='purpose_relaxation') pro duševní a fyzickou relaxaci, rekreaci
+          %br
+          = f.select :purpose_hobbitry, :options => ['---'] + (1..5).to_a
+          pro zájmovou činnost (sport, příroda, myslivost, poznávání apod.)
+          %br
+          = f.select :purpose_gathering, :options => ['---'] + (1..5).to_a
+          pro sběr lesních plodin (včetně léčivých rostlin)
+          %br
+          = f.select :purpose_fuel, :options => ['---'] + (1..5).to_a
+          pro sběr paliva
+        %li
+          Které je Vaše oblíbené území lesa?
+          %br
+          prosím vypište
+          = f.text_area :favorite_place
+
+    = f.submit 'Odeslat I. část', :class => 'button'
+

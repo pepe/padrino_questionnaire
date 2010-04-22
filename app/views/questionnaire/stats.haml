@@ -1,0 +1,105 @@
+%h2 Statistika dotazníku
+
+#wrapper
+  %ol.print
+    %li
+      Jak často navštěvujete les v průměru ročně
+      %ol
+        = occurence_and_percents(:frequency)
+
+    %li
+      Jak dlouhou dobu obvykle trávíte návštěvou lesa?
+      %ul
+        %li
+          min:
+          = @stats[:time_spent]['min']
+        %li
+          max:
+          = @stats[:time_spent]['max']
+        %li
+          avg:
+          = @stats[:time_spent]['avg']
+
+    %li
+      Za jakým účelem obvykle navštěvujete les
+      %ol
+        %li
+          pro duševní a fyzickou relaxaci, rekreaci 
+          %ul
+            = occurence_and_percents(:purpose_relaxation)
+        %li
+          pro zájmovou činnost (sport, příroda, myslivost, poznávání apod.)
+          %ul
+            = occurence_and_percents(:purpose_hobbitry)
+        %li
+          pro sběr lesních plodin (včetně léčivých rostlin)
+          %ul
+            = occurence_and_percents(:purpose_gathering)
+        %li
+          pro sběr paliva
+          %ul
+            = occurence_and_percents(:purpose_fuel)
+
+    %li
+      Kolik byste byli ochotni zaplatit peněz za jednorázovou návštěvu Vašeho oblíbeného lesa, aniž byste se jí vzdali 
+      %ul
+        %li
+          min:
+          = @stats[:once_payment]['min']
+        %li
+          max:
+          = @stats[:once_payment]['max']
+        %li
+          avg:
+          = @stats[:once_payment]['avg']
+
+    %li
+      Jakou částku byste byli ochotni jednorázově přijmout výměnou za trvalé znemožnění návštěvy Vašeho oblíbeného lesa?
+      %ul
+        %li
+          min:
+          = @stats[:once_receive]['min']
+        %li
+          max:
+          = @stats[:once_receive]['max']
+        %li
+          avg:
+          = @stats[:once_receive]['avg']
+
+    %li
+      Jaká je podle vás významnost funkcí lesa v České republice? 
+      %ol
+        %li
+          produkce a využití dříví
+          %ul
+            = occurence_and_percents(:important_wood)
+        %li
+          produkce a sběr lesních plodin (včetně hub a léčivých rostlin)
+          %ul
+            = occurence_and_percents(:important_gathering)
+        %li
+          vodohospodářské funkce
+          %ul
+            = occurence_and_percents(:important_water)
+        %li
+          půdoochranné funkce
+          %ul
+            = occurence_and_percents(:important_ground)
+        %li
+          klimatické funkce
+          %ul
+            = occurence_and_percents(:important_climate)
+        %li
+          zdravotně hygienické funkce (rekreační, zdravotní)
+          %ul
+            = occurence_and_percents(:important_health)
+        %li
+          přírodoochranné funkce
+          %ul
+            = occurence_and_percents(:important_nature)
+
+    %li
+      Jaký je váš vztah k České zemědělské univerzitě v Praze
+      %ol 
+        = occurence_and_percents(:relation)
+

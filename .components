@@ -1,0 +1,7 @@
+--- 
+:test: rspec
+:mock: none
+:script: rightjs
+:renderer: haml
+:stylesheet: sass
+:orm: mongoid
