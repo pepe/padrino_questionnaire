@@ -6,18 +6,18 @@
     = params[:uid]
     %br
     %a{:href => "/print/#{params[:uid]}", :class => 'button'} Verze k tisku
-  - form_for @sheet, :action => "/save_final/#{params[:uid]}", :method => :post do |f|
+  - form_for @sheet, "/save_final/#{params[:uid]}", :method => :post do |f|
     %p Děkujeme za Váš čas, který jste věnovali vyplnění tohoto dotazníku. V případě, že byste rádi jakýmkoliv způsobem okomentovali dotazník a tím se podíleli na jeho budoucím zkvalitnění, máte prostor níže.
     %br
-    %label{:for => 'note'} Komentář
+    %label{:for => :sheet_note} Komentář
     %br
-    = f.text_area :note, :name => 'questionnaire[note]'
+    = f.text_area :note
     %br
     %p Pokud budete mít zájem o zaslání výsledků tohoto průzkumu, vypište prosím níže Vaši emailovou adresu. Výsledky Vám budou zaslány po závěrečném zpracování dat. Průzkum je zcela anonymní, Vaše emailová adresa nebude použita pro žádné jiné účely.
     %br
-    %label{:for => 'email'} email
+    %label{:for => :sheet_email} email
     %br
-    = f.text_field :email, :name => 'questionnaire[email]'
+    = f.text_field :email
     %br
     %br
     = f.submit 'Dokončit dotazník a přejít na úvodní stránku', :class => 'button'

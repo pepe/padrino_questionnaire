@@ -12,6 +12,8 @@ gem 'bson_ext', "0.20.1"
 
 # Test requirements
 gem 'rspec', :require => "spec", :group => "test"
+gem 'capybara', :group => "test"
+gem 'cucumber', :group => "test"
 gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino

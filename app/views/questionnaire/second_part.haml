@@ -41,14 +41,14 @@
         %li
           Jaký je váš vztah k České zemědělské univerzitě v Praze?
           %br
-          = f.radio_button :relation_employee, :name => 'sheet[relation]', :value => 'jsem zaměstnanec/zaměstnankyně'
-          %label{:for => :relation_employee} jsem zaměstnanec/zaměstnankyně
+          = f.radio_button :relation, :value => 'employee'
+          %label{:for => :sheet_relation_employee} jsem zaměstnanec/zaměstnankyně
           %br
-          = f.radio_button :relation_student, :name => 'sheet[relation]', :value => 'jsem student/studentka'
-          %label{:for => :relation_student} jsem student/studentka
+          = f.radio_button :relation, :value => 'student'
+          %label{:for => :sheet_relation_student} jsem student/studentka
           %br
-          = f.radio_button :relation_none, :name => 'sheet[relation]', :value => 'žádný'
-          %label{:for => :relation_none} žádný
+          = f.radio_button :relation, :value => 'none'
+          %label{:for => :sheet_relation_none} žádný
           %br
       = f.submit 'Odeslat II. část', :class => 'button'
 
