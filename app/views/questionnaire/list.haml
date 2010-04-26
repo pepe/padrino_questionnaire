@@ -1,8 +1,8 @@
 %h2 Výpis všech dotazníků
 
 #wrapper
-  %h2= "Počet dotazníků v systému: %i" % @questionnaires.size
-  %ol
-    - @questionnaires.each do |questionnaire|
-      %li
-        = "%s vyplněn v %s" % [link_to(questionnaire), questionnaire.started_at.strftime("%F %T")]
+  %h3= "Počet dotazníků v systému: %i" % @sheets.size
+  %ol.sheets
+    - @sheets.each do |sheet|
+      %li.sheet
+        = "%s vyplněn v %s" % [link_to(sheet.id, '/print/' + sheet.id), sheet.started_at.strftime("%F %T")]

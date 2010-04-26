@@ -63,7 +63,7 @@ Padquest.controllers :questionnaire do
   end
 
   get :list, :map => '/list' do
-    @questionnaires = Sheet.finished
+    @sheets = Sheet.finished
     render 'questionnaire/list'
   end
   
