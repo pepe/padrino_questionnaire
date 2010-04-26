@@ -33,18 +33,19 @@
           hodin
         %li
           Za jakým účelem obvykle navštěvujete les?
-          prosím určete významnost od nejvyšší 5 po nejnižší 1
           %br
-          = f.select :purpose_relaxation, :options => ['---'] + (1..5).to_a
+          %i prosím určete významnost od nejvyšší 5 po nejnižší 1
+          %br
+          = f.select :purpose_relaxation, :options => num_options
           %label(for='purpose_relaxation') pro duševní a fyzickou relaxaci, rekreaci
           %br
-          = f.select :purpose_hobbitry, :options => ['---'] + (1..5).to_a
+          = f.select :purpose_hobbitry, :options => num_options
           pro zájmovou činnost (sport, příroda, myslivost, poznávání apod.)
           %br
-          = f.select :purpose_gathering, :options => ['---'] + (1..5).to_a
+          = f.select :purpose_gathering, :options => num_options
           pro sběr lesních plodin (včetně léčivých rostlin)
           %br
-          = f.select :purpose_fuel, :options => ['---'] + (1..5).to_a
+          = f.select :purpose_fuel, :options => num_options
           pro sběr paliva
         %li
           Které je Vaše oblíbené území lesa?

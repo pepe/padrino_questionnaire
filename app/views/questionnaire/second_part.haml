@@ -15,25 +15,27 @@
         %li
           Jaká je podle vás významnost funkcí lesa v České republice?
           %br
-          = f.select :important_wood, :options => ['---'] + (1..5).to_a
+          %i prosím určete významnost od nejvyšší 5 po nejnižší 1
+          %br
+          = f.select :important_wood, :options => num_options
           %label{:for => :important_wood} produkce a využití dříví 
           %br
-          = f.select :important_gathering, :options => ['---'] + (1..5).to_a
+          = f.select :important_gathering, :options => num_options
           %label{:for => :important_gathering} produkce a sběr lesních plodin (včetně hub a léčivých rostlin)
           %br
-          = f.select :important_water, :options => ['---'] + (1..5).to_a
+          = f.select :important_water, :options => num_options
           %label{:for => :important_water} vodohospodářské funkce
           %br
-          = f.select :important_ground, :options => ['---'] + (1..5).to_a
+          = f.select :important_ground, :options => num_options
           %label{:for => :important_ground} půdoochranné funkce
           %br
-          = f.select :important_climate, :options => ['---'] + (1..5).to_a
+          = f.select :important_climate, :options => num_options
           %label{:for => :important_climate} klimatické funkce
           %br
-          = f.select :important_health, :options => ['---'] + (1..5).to_a
+          = f.select :important_health, :options => num_options
           %label{:for => :important_health} zdravotně hygienické funkce (rekreační, zdravotní)
           %br
-          = f.select :important_nature, :options => ['---'] + (1..5).to_a
+          = f.select :important_nature, :options => num_options
           %label{:for => :important_nature} přírodoochranné funkce
           %br
         %li

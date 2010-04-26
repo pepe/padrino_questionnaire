@@ -10,6 +10,11 @@ Padquest.controllers :questionnaire do
       }
       return res
     end
+
+    # returns options for select
+    def num_options(count = 5)
+      ['---'] + (1..5).to_a.reverse
+    end
   end
   get :index, :map => "/" do
     sheet = Sheet.start_new
