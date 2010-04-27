@@ -1,14 +1,24 @@
-%html
+!!! Strict
+%html{:lang => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
     %title Dotazník navštěvnosti lesa
-    %link(rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" title="no title" charset="utf-8")
-    %link(rel="stylesheet" href="/stylesheets/application.css" type="text/css" media="screen" title="no title" charset="utf-8")
-    %meta{'http-equiv' => 'Content-Type', :content => 'text/html;charset=utf-8'}
+    =stylesheet_link_tag "base"
+    =stylesheet_link_tag "style"
   %body
     #container
-      %h1 Dotazník navštěvnosti lesa
-      = yield
-      #footer
-        Developed on
-        =link_to 'laststar', 'http://laststar.eu'
+      #header
+        %h1=link_to 'Dotazník navštěvnosti lesa', url(:questionnaire_index)
+      #wrapper.wat-cf
+        #main
+          =yield
+          #footer
+            .block
+              %p
+                Copyright ©
+                =Time.now.year
+                Developed on
+                =link_to 'laststar', 'http://laststar.eu'
+                Questionnaire - Powered by
+                =link_to "Padrino v.#{Padrino.version}", "http://padrino.github.com", :target => :_blank
 

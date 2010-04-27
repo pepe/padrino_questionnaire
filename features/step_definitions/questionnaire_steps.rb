@@ -40,7 +40,7 @@ Then /^I should see '(.+)' followed by number$/ do |text|
   page.should have_xpath('//*', :text => regexp)
 end
 When /^I follow unique code$/ do
-  find('//a').click 
+  find('//li/a').click 
 end
 Given /^I know 2 questionnaires were filled in$/ do
   2.times {Given "I fill in both parts of questionnaire"}

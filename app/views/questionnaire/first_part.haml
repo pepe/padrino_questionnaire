@@ -1,12 +1,11 @@
-%h2 Dotazník I. část
+#block-text.block
+  .content
+    %h2 Dotazník I. část
 
-#wrapper
-  - form_for @sheet, "/save_first/#{params[:uid]}", :method => :post do |f|
-    - field_set_tag do
-      %ol
-        %li
-          Jak často navštěvujete les v průměru ročně?
-          %br
+    .inner
+      - form_for @sheet, "/save_first/#{params[:uid]}", :method => :post do |f|
+        - field_set_tag do
+          %h3 1. Jak často navštěvujete les v průměru ročně?
           = f.radio_button :frequency, :value => 'none'
           %label{:for => :sheet_frequency_none} vůbec
           %br
@@ -22,38 +21,34 @@
           = f.radio_button :frequency, :value => 'daily'
           %label{:for => :sheet_frequency_daily} 2 až 3 x týdně
           %br
-          %label{:for => :sheet_frequency_other} Jinak často
-          %br
+          %label{:for => :sheet_frequency_other} Jinak často:
           %i prosím vypište
           = f.text_field :frequency_other
-        %li
-          Jak dlouhou dobu obvykle trávíte návštěvou lesa?
-          %br
+        - field_set_tag do
+          %h3 2. Jak dlouhou dobu obvykle trávíte návštěvou lesa?
           %i prosím vypište
           = f.text_field :time_spent
           %label{:for => 'sheet_time_spent'} hodin
-        %li
-          Za jakým účelem obvykle navštěvujete les?
-          %br
+        - field_set_tag do
+          %h3 3. Za jakým účelem obvykle navštěvujete les?
           %i prosím určete významnost od nejvyšší 5 po nejnižší 1
           %br
           = f.select :purpose_relaxation, :options => num_options
-          %label(for='purpose_relaxation') pro duševní a fyzickou relaxaci, rekreaci
+          %label{:for => 'sheet_purpose_relaxation'} pro duševní a fyzickou relaxaci, rekreaci
           %br
           = f.select :purpose_hobbitry, :options => num_options
-          pro zájmovou činnost (sport, příroda, myslivost, poznávání apod.)
+          %label{:for => 'sheet_purpose_hobbitry'} pro zájmovou činnost (sport, příroda, myslivost, poznávání apod.)
           %br
           = f.select :purpose_gathering, :options => num_options
-          pro sběr lesních plodin (včetně léčivých rostlin)
+          %label{:for => 'sheet_purpose_gathering'} pro sběr lesních plodin (včetně léčivých rostlin)
           %br
           = f.select :purpose_fuel, :options => num_options
-          pro sběr paliva
-        %li
-          Které je Vaše oblíbené území lesa?
-          %br
+          %label{:for => 'sheet_purpose_hobbitry'} pro sběr paliva
+        - field_set_tag do
+          %h3 4. Které je Vaše oblíbené území lesa?
           %i prosím vypište
           %br
           = f.text_area :favorite_place, :cols => 60, :rows => 6
-
-    = f.submit 'Odeslat I. část', :class => 'button'
+        %p.links
+          = f.submit 'Odeslat I. část', :class => 'button'
 

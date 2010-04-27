@@ -1,8 +1,10 @@
-%h2 Výpis všech dotazníků
+#block-text.block
+  .content
+    %h2 Výpis všech dotazníků
 
-#wrapper
-  %h3= "Počet dotazníků v systému: %i" % @sheets.size
-  %ol.sheets
-    - @sheets.each do |sheet|
-      %li.sheet
-        = "%s vyplněn v %s" % [link_to(sheet.id, '/print/' + sheet.id), sheet.started_at.strftime("%F %T")]
+    .inner
+      %h3= "Počet dotazníků v systému: %i" % @sheets.size
+      %ol.sheets
+        - @sheets.each do |sheet|
+          %li.sheet
+            = "%s vyplněn v %s" % [link_to(sheet.id, '/print/' + sheet.id), sheet.started_at.strftime("%F %T")]

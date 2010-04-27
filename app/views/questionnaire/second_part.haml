@@ -1,20 +1,21 @@
-%h2 Dotazník II. část
+#block-text.block
+  .content
+    %h2 Dotazník II. část
 
-#wrapper
-  - form_for @sheet, "/save_second/#{params[:uid]}", :method => :post do |f|
-    - field_set_tag do
-      %ol{:start => "5"}
-        %li
-          %label{:for => :once_payment} Kolik byste byli ochotni zaplatit peněz za jednorázovou návštěvu Vašeho oblíbeného lesa, aniž byste se jí vzdali?
-          %br
+    .inner
+      - form_for @sheet, "/save_second/#{params[:uid]}", :method => :post do |f|
+        - field_set_tag do
+          %h3 5. Kolik byste byli ochotni zaplatit peněz za jednorázovou návštěvu Vašeho oblíbeného lesa, aniž byste se jí vzdali?
+          %i prosím vypište
           = f.text_field :once_payment
-        %li
-          %label{:for => :once_receive} Jakou částku byste byli ochotni jednorázově přijmout výměnou za trvalé znemožnění návštěvy Vašeho oblíbeného lesa?
-          %br
+          %label{:for => :once_payment} Kč
+        - field_set_tag do
+          %h3 6. Jakou částku byste byli ochotni jednorázově přijmout výměnou za trvalé znemožnění návštěvy Vašeho oblíbeného lesa?
+          %i prosím vypište
           = f.text_field :once_receive
-        %li
-          Jaká je podle vás významnost funkcí lesa v České republice?
-          %br
+          %label{:for => :once_receive} Kč
+        - field_set_tag do
+          %h3 7. Jaká je podle vás významnost funkcí lesa v České republice?
           %i prosím určete významnost od nejvyšší 5 po nejnižší 1
           %br
           = f.select :important_wood, :options => num_options
@@ -38,9 +39,8 @@
           = f.select :important_nature, :options => num_options
           %label{:for => :important_nature} přírodoochranné funkce
           %br
-        %li
-          Jaký je váš vztah k České zemědělské univerzitě v Praze?
-          %br
+        - field_set_tag do
+          %h3 8. Jaký je váš vztah k České zemědělské univerzitě v Praze?
           = f.radio_button :relation, :value => 'employee'
           %label{:for => :sheet_relation_employee} jsem zaměstnanec/zaměstnankyně
           %br
@@ -49,6 +49,6 @@
           %br
           = f.radio_button :relation, :value => 'none'
           %label{:for => :sheet_relation_none} žádný
-          %br
-      = f.submit 'Odeslat II. část', :class => 'button'
+        %p
+          = f.submit 'Odeslat II. část', :class => 'button'
 

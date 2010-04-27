@@ -1,36 +1,38 @@
-%h2 Vyplněný dotazník
+#block-text.block
+  .content
+    %h2 Vyplněný dotazník
 
-#wrapper
-  %p
-    ="Začátek: %s" % @sheet.started_at.strftime("%F %T")
-    ="Konec: %s" % @sheet.finished_at.strftime("%F %T")
-  %ol.print
-    %li
-      = "Jak často navštěvujete les v průměru ročně: %s" % @sheet.frequency
-    %li
-      = "Jak dlouhou dobu obvykle trávíte návštěvou lesa: %s" % @sheet.time_spent
-    %li
-      Za jakým účelem obvykle navštěvujete les:
-      %ul
-        %li= "pro duševní a fyzickou relaxaci, rekreaci: %s" % @sheet.purpose_relaxation
-        %li= "pro zájmovou činnost (sport, příroda, myslivost, poznávání apod.): %s" % @sheet.purpose_hobbitry
-        %li= "pro sběr lesních plodin (včetně léčivých rostlin): %s" % @sheet.purpose_gathering
-        %li= "pro sběr paliva: %s" % @sheet.purpose_fuel
-    %li
-      = "Které je Vaše oblíbené území lesa: %s" % @sheet.favorite_place
-    %li
-      = "Kolik byste byli ochotni zaplatit peněz za jednorázovou návštěvu Vašeho oblíbeného lesa, aniž byste se jí vzdali: %s" % @sheet.once_payment
-    %li
-      = "Jakou částku byste byli ochotni jednorázově přijmout výměnou za trvalé znemožnění návštěvy Vašeho oblíbeného lesa: %s" % @sheet.once_receive
-    %li
-      Jaká je podle vás významnost funkcí lesa v České republice:
-      %ul
-        %li= "produkce a využití dříví: %s" % @sheet.important_wood
-        %li= "produkce a sběr lesních plodin (včetně hub a léčivých rostlin): %s" % @sheet.important_water
-        %li= "vodohospodářské funkce: %s" % @sheet.important_water
-        %li= "půdoochranné funkce: %s" % @sheet.important_ground
-        %li= "klimatické funkce: %s" % @sheet.important_climate
-        %li= "zdravotně hygienické funkce (rekreační, zdravotní): %s" % @sheet.important_health
-        %li= "přírodoochranné funkce: %s" % @sheet.important_nature
-    %li
-      = "Jaký je váš vztah k České zemědělské univerzitě v Praze: %s" % @sheet.relation
+    .inner
+      %p
+        ="Začátek: %s" % @sheet.started_at.strftime("%F %T")
+        ="Konec: %s" % @sheet.finished_at.strftime("%F %T")
+      %ol.print
+        %li
+          = "Jak často navštěvujete les v průměru ročně: %s" % @sheet.frequency
+        %li
+          = "Jak dlouhou dobu obvykle trávíte návštěvou lesa: %s" % @sheet.time_spent
+        %li
+          Za jakým účelem obvykle navštěvujete les:
+          %ol(type='a')
+            %li= "pro duševní a fyzickou relaxaci, rekreaci: %s" % @sheet.purpose_relaxation
+            %li= "pro zájmovou činnost (sport, příroda, myslivost, poznávání apod.): %s" % @sheet.purpose_hobbitry
+            %li= "pro sběr lesních plodin (včetně léčivých rostlin): %s" % @sheet.purpose_gathering
+            %li= "pro sběr paliva: %s" % @sheet.purpose_fuel
+        %li
+          = "Které je Vaše oblíbené území lesa: %s" % @sheet.favorite_place
+        %li
+          = "Kolik byste byli ochotni zaplatit peněz za jednorázovou návštěvu Vašeho oblíbeného lesa, aniž byste se jí vzdali: %s" % @sheet.once_payment
+        %li
+          = "Jakou částku byste byli ochotni jednorázově přijmout výměnou za trvalé znemožnění návštěvy Vašeho oblíbeného lesa: %s" % @sheet.once_receive
+        %li
+          Jaká je podle vás významnost funkcí lesa v České republice:
+          %ol(type='a')
+            %li= "produkce a využití dříví: %s" % @sheet.important_wood
+            %li= "produkce a sběr lesních plodin (včetně hub a léčivých rostlin): %s" % @sheet.important_water
+            %li= "vodohospodářské funkce: %s" % @sheet.important_water
+            %li= "půdoochranné funkce: %s" % @sheet.important_ground
+            %li= "klimatické funkce: %s" % @sheet.important_climate
+            %li= "zdravotně hygienické funkce (rekreační, zdravotní): %s" % @sheet.important_health
+            %li= "přírodoochranné funkce: %s" % @sheet.important_nature
+        %li
+          = "Jaký je váš vztah k České zemědělské univerzitě v Praze: %s" % @sheet.relation
