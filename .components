@@ -1,5 +1,5 @@
 --- 
-:test: rspec
+:test: cucumber
 :mock: none
 :script: rightjs
 :renderer: haml
