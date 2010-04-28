@@ -24,7 +24,6 @@ class Sheet
   field :relation
   field :email
   field :note
-  
 
   named_scope :finished, :where => {:finished_at.exists => true, :started_at.exists => true}, :order_by => 'finished_at'
   class << self

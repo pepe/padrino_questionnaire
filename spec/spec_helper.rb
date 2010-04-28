@@ -10,8 +10,8 @@ end
 def app
   ##
   # You can hanlde all padrino applications using instead:
-  #   Padrino.application
-  Padquest.tap { |app|  }
+  Padrino.application
+  # Padquest.tap { |app|  }
 end
 
 def random_sheets(options = {})

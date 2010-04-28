@@ -7,7 +7,6 @@ describe "QuestionnaireController" do
       last_response.should be_ok
     end
   end
-
   context "Questionnaire" do
     before(:each) do
       @sheet = Sheet.start_new
@@ -46,7 +45,7 @@ describe "QuestionnaireController" do
     end
 
   end
-
+  # TODO move to its own controller
   context "Outputs" do
     before(:each) do
       @sheet = Sheet.start_new
