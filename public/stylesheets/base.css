@@ -13,8 +13,8 @@ h4{font-size:16px;margin:10px 0;font-weight:normal;}
 hr{height:1px;border:0;}
 p{margin:15px 0;}
 a img{border:none;}
-body{font-size:12px;font-family:sans-serif;}
-#container{min-width:760px;}
+body{width:800px;margin-left:auto;margin-right:auto;font-size:12px;font-family:sans-serif;}
+#container{width:760px;}
 #header,#wrapper{padding:0 20px;}
 #header{position:relative;padding-top:1px;}
 #header h1{margin:0;padding:10px 0;font-size:26px;}
