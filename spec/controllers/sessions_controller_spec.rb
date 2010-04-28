@@ -1,11 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper.rb')
-def app
-  ##
-  # You can hanlde all padrino applications using instead:
-  #   Padrino.application
-  Padquest.tap { |app|  }
-end
-
 
 describe "SessionsController" do
   context "New session" do

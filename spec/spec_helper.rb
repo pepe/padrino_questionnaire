@@ -42,3 +42,21 @@ def random_sheets(options = {})
   }
 end
 
+# returns mocked account
+def mock_account
+  @account ||= mock(Account, mock_account_data)
+end
+
+def mock_account_data(stubs = nil)
+  if stubs
+    mock_account_data.merge stubs
+  else
+    @account_data ||= {
+      'id' => "1",
+      'role' => 'admin',
+      'name' => 'god',
+      'surname' => 'hides',
+      'email' => 'god@laststar.eu'
+    }
+  end
+end
