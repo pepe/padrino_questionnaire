@@ -98,8 +98,8 @@ describe "Sheet Model" do
     it "should compute occurences of range attributes" do
       stats = Sheet.sumas_for(:frequency)
       stats.should_not be_nil
-      stats['vůbec'].should == 3
-      stats['1 až 2 x ročně'].should == 2
+      stats['none'].should == 3
+      stats['yearly'].should == 2
       %w(purpose_hobbitry purpose_gathering purpose_relaxation
       purpose_fuel important_nature important_wood important_gathering 
       important_water important_climate important_health
@@ -114,7 +114,7 @@ describe "Sheet Model" do
       }
       stats = Sheet.sumas_for(:relation)
       stats.should_not be_nil
-      stats['žádný'].should == 5
+      stats['none'].should == 5
     end
     it "should compute min/max/average for value attributes" do
       stat = Sheet.minmax_for(:time_spent)

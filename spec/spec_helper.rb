@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'ruby-debug'
 PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 
@@ -18,7 +16,7 @@ def random_sheets(options = {})
   Sheet.destroy_all
   (options[:amount] || 2).times {|i|
     Sheet.create(
-      {"frequency" => i%2 == 1 ? "1 až 2 x ročně" : "vůbec",
+      {"frequency" => i%2 == 1 ? "yearly" : "none",
       "frequency_other" => "jak rikam",
       "time_spent" => (i+1)*10,
       "purpose_gathering" => (i%4) + 1,
@@ -35,7 +33,7 @@ def random_sheets(options = {})
       "important_climate" => (i%4) + 1,
       "important_health" => (i%4) + 1,
       "important_ground" => (i%4) + 1,
-      "relation" => "žádný",
+      "relation" => "none",
       "started_at" => Time.now - (i*90),
       "finished_at" => Time.now - (i*60)
     })
