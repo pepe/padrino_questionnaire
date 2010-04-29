@@ -10,7 +10,6 @@ Padquest.controllers :questionnaire do
       }
       return res
     end
-
     # returns options for select
     def num_options(count = 5)
       ['---'] + (1..5).to_a.reverse
@@ -83,7 +82,7 @@ Padquest.controllers :questionnaire do
               :relation => Sheet.sumas_for(:relation),
               :time_spent => Sheet.minmax_for(:time_spent),
               :once_payment => Sheet.minmax_for(:once_payment),
-              :once_receive => Sheet.minmax_for(:once_payment) 
+              :once_receive => Sheet.minmax_for(:once_receive) 
     }
     render 'questionnaire/stats'
   end
