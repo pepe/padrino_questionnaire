@@ -31,3 +31,6 @@ end
 Then /^I can choose '(.+)'$/ do |value|
   choose(value) 
 end
+When /^I dump$/ do
+  save_and_open_page
+end

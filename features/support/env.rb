@@ -4,7 +4,4 @@ require File.expand_path(File.dirname(__FILE__) + "/../../config/boot")
 require 'capybara/cucumber'
 require 'spec/expectations'
 
-##
-# You can handle all padrino applications using instead:
-#   Padrino.application
-Capybara.app = Padquest.tap { |app|  }
+Capybara.app = Padrino.application
