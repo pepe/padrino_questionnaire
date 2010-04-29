@@ -58,3 +58,8 @@ def mock_account_data(stubs = nil)
     }
   end
 end
+
+# mocks admin login
+def mock_admin_login
+  Account.should_receive(:find).with(nil).and_return(mock_account) 
+end
