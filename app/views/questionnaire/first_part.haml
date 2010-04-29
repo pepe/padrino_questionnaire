@@ -6,6 +6,8 @@
       - form_for @sheet, "/save_first/#{params[:uid]}", :method => :post do |f|
         - field_set_tag do
           %h3 1. Jak často navštěvujete les v průměru ročně?
+          %i prosím zaklikněte
+          %br
           = f.radio_button :frequency, :value => 'none'
           %label{:for => :sheet_frequency_none} vůbec
           %br

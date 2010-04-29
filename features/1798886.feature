@@ -8,6 +8,7 @@ Feature: Create form with questions in two steps
     Given I started new questionnaire
     And I should see 'Dotazník I. část'
     And I should see 'Jak často navštěvujete les v průměru ročně?'
+    And I should see 'prosím zaklikněte'
     And I should see 'Jak dlouhou dobu obvykle trávíte návštěvou lesa?'
     And I should see 'Za jakým účelem obvykle navštěvujete les?'
     And I should see 'Které je Vaše oblíbené území lesa?'
@@ -42,6 +43,7 @@ Feature: Create form with questions in two steps
     And I should see 'Jakou částku byste byli ochotni jednorázově přijmout výměnou za trvalé znemožnění návštěvy Vašeho oblíbeného lesa?'
     And I should see 'Jaká je podle vás významnost funkcí lesa v České republice?'
     And I should see 'Jaký je váš vztah k České zemědělské univerzitě v Praze?'
+    And I should see 'prosím zaklikněte'
 
   Scenario: Second part of questionnaire
     Given I filled first part of questionnaire
