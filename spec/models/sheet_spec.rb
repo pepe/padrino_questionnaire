@@ -40,7 +40,7 @@ describe "Sheet Model" do
         {"frequency" => "vůbec",
         "frequency_other" => "jak rikam",
         "relation" => "žádný",
-        "time_spent" => "questionnaire[time_spent]",
+        "time_spent" => "12",
         "purpose_gathering" => "5",
         "purpose_hobbitry" => "5",
         "purpose_fuel" => "5",
@@ -57,6 +57,21 @@ describe "Sheet Model" do
         "important_ground" => "5"}).should be_true
       @sheet.update_attributes({:email => 'no@on.cz'})
       @sheet.update_attributes({:note => 'note'})
+    end
+    it "should validate numericality of once_payment" do
+      sheet = Sheet.new(:once_payment => 'a')
+      sheet.should_not be_valid
+      sheet.errors[:once_payment].should_not be_nil
+    end
+    it "should validate numericality of once_receive" do
+      sheet = Sheet.new(:once_receive => 'a')
+      sheet.should_not be_valid
+      sheet.errors[:once_receive].should_not be_nil
+    end
+    it "should validate numericality of time_spent" do
+      sheet = Sheet.new(:time_spent => 'a')
+      sheet.should_not be_valid
+      sheet.errors[:time_spent].should_not be_nil
     end
   end
 
