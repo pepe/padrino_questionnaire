@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 Given /^I started new questionnaire$/ do
   Given "I visit '/'"
   Then "I follow 'Pokračujte ve vyplnění dotazníku'"
