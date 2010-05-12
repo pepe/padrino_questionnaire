@@ -47,7 +47,6 @@ Admin.controllers :sheets do
 
   get :finished do
     @sheets = Sheet.finished
-    @title = "%s %s" % [pat(:finished), mt(:sheet)]
-    render 'sheets/index'
+    render 'sheets/finished'
   end
 end

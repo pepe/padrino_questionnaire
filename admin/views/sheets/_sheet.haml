@@ -1,0 +1,8 @@
+%tr
+  %td.first=link_to sheet.id, "/print/%s" % sheet.id
+  %td=l sheet.finished_at, :format => :long if sheet.finished_at
+  %td.last
+    =button_to pat(:edit), url(:sheets, :edit, :id => sheet.id), :method => :get, :class => :button_to
+    ="|"
+    =button_to pat(:delete), url(:sheets, :destroy, :id => sheet.id), :method => :delete, :class => :button_to
+
