@@ -1,0 +1,27 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:sheets, :index)
+      %li=link_to pat(:new), url(:sheets, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:sheet)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:sheet, :id)
+          %th=mat(:sheet, :finished_at)
+          %th.last="&nbsp;"
+        -@sheets.each do |sheet|
+          %tr
+            %td.first=link_to sheet.id, "/print/%s" % sheet.id
+            %td=sheet.finished_at
+            %td.last
+              =button_to pat(:edit), url(:sheets, :edit, :id => sheet.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:sheets, :destroy, :id => sheet.id), :method => :delete, :class => :button_to
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
