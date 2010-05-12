@@ -4,6 +4,8 @@ source :rubygems
 gem 'rake'
 gem 'rack-flash'
 gem 'thin' # or mongrel
+gem 'vlad'
+gem 'vlad-git'
 
 # Component requirements
 gem 'haml'
