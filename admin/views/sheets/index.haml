@@ -5,8 +5,13 @@
       %li=link_to pat(:new), url(:sheets, :new)
   .content
     %h2.title
-      =pat(:all)
-      =mt(:sheet)
+      -if @title
+        =@title
+      -else
+        =pat(:all)
+        =mt(:sheet)
+    .filters
+      =link_to t(:finished), "/admin/sheets/finished", :id => 'finished'
     .inner
       %table.table
         %tr
@@ -16,7 +21,7 @@
         -@sheets.each do |sheet|
           %tr
             %td.first=link_to sheet.id, "/print/%s" % sheet.id
-            %td=sheet.finished_at
+            %td=l sheet.finished_at, :format => :long if sheet.finished_at
             %td.last
               =button_to pat(:edit), url(:sheets, :edit, :id => sheet.id), :method => :get, :class => :button_to
               ="|"

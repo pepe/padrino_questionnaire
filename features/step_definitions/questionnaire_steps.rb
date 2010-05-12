@@ -45,8 +45,15 @@ When /^I follow unique code$/ do
   find('//li/a').click 
 end
 Given /^I know 2 questionnaires were filled in$/ do
+  Sheet.destroy_all
   2.times {Given "I fill in both parts of questionnaire"}
 end
 When /^I follow first sheet detail$/ do 
   locate(:css, 'table.table td.first a').click
+end
+Given /^I know 2 questionnaires were just started$/ do
+  2.times {Given "I filled first part of questionnaire"}
+end
+When /^I follow 'Finished' filter$/ do
+  locate(:css, 'div.filters a#finished').click
 end

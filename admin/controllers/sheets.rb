@@ -44,4 +44,10 @@ Admin.controllers :sheets do
     end
     redirect url(:sheets, :index)
   end
+
+  get :finished do
+    @sheets = Sheet.finished
+    @title = "%s %s" % [pat(:finished), mt(:sheet)]
+    render 'sheets/index'
+  end
 end
