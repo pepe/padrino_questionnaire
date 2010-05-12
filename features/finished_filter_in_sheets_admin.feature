@@ -8,7 +8,7 @@ Feature: Finished filter in sheets admin
     Given I know 2 questionnaires were filled in
     And I know 2 questionnaires were just started
     And I logged in as admin
-    When I follow 'Sheets'
-    And I follow 'Finished' filter
+    And I follow 'Sheets'
+    When I follow 'Finished'
     Then I should see 'Finished Sheet'
 

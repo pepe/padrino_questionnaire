@@ -54,6 +54,3 @@ end
 Given /^I know 2 questionnaires were just started$/ do
   2.times {Given "I filled first part of questionnaire"}
 end
-When /^I follow 'Finished' filter$/ do
-  locate(:css, 'ul.wat-cf a#finished').click
-end
