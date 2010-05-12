@@ -36,7 +36,7 @@ describe "AccountsController" do
       last_response.should be_ok
     end
   end
-  context "New " do
+  context "Edit account" do
     it "should render edit form" do
       mock_admin_login
       Account.should_receive(:find).with("1").and_return(Account.new(mock_account_data))
@@ -65,21 +65,21 @@ describe "AccountsController" do
     before :each do
       mock_admin_login
     end
-    it "should kill account number two" do
+    it "should kill account number two and redirect back" do
       account_to_kill = mock(Account, mock_account_data('id' => '2'))
       account_to_kill.should_receive(:destroy).and_return(true)
       Account.should_receive(:find).with("2").and_return(account_to_kill)
       delete '/admin/accounts/destroy/2'
       last_response.should be_redirect
     end
-    it "should not kill unkillable account number two" do
+    it "should not kill unkillable account number two and redirect back" do
       account_to_kill = mock(Account, mock_account_data('id' => '2'))
       account_to_kill.should_receive(:destroy).and_return(false)
       Account.should_receive(:find).with("2").and_return(account_to_kill)
       delete '/admin/accounts/destroy/2'
       last_response.should be_redirect
     end
-    it "should not kill current account" do
+    it "should not kill current account and redirect back" do
       Account.should_receive(:find).with("1").and_return(mock_account)
       mock_account.should_not_receive(:destroy)
       delete '/admin/accounts/destroy/1'

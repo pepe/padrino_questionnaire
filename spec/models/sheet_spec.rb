@@ -26,7 +26,7 @@ describe "Sheet Model" do
     it "should have start method" do
       @sheet.start
       @sheet.started_at.should be_an_instance_of(Time)
-      @sheet.started_at.should < Time.now
+      @sheet.started_at.should < Time.now + 100
     end
     it "should have finish method" do
       @sheet.finish
