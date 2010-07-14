@@ -9,14 +9,19 @@ gem 'vlad-git'
 
 # Component requirements
 gem 'haml'
-gem 'mongoid', "1.3.0"
-gem 'bson_ext', "0.20.1"
+gem 'mongoid'
+gem 'bson_ext'
 
 # Test requirements
-gem 'rspec', :require => "spec", :group => "test"
-gem 'capybara', :group => "test"
-gem 'cucumber', :group => "test"
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+group :test do
+  gem "rspec-core", "2.0.0.beta.17"
+  gem "rspec-expectations", "2.0.0.beta.17"
+  gem "rspec-mocks", "2.0.0.beta.17"
+  gem 'capybara'
+  gem 'cucumber'
+  gem 'rack-test', :require => 'rack/test', :group => 'test'
+  gem 'autotest'
+end
 
 # Padrino
-gem 'padrino', "0.9.10"
+gem 'padrino'

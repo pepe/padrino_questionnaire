@@ -3,7 +3,7 @@
 PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 
-Spec::Runner.configure do |conf|
+Rspec.configure do |conf|
   conf.include Rack::Test::Methods
 end
 

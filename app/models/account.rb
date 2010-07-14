@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class Account
   include Mongoid::Document
   attr_accessor :password
@@ -33,14 +35,14 @@ class Account
   end
 
   ##
-  # This method is used from AuthenticationHelper
+  # This method is used by AuthenticationHelper
   #
   def self.find_by_id(id)
     find(id) rescue nil
   end
 
   ##
-  # This method is used for retrive the original password.
+  # This method is used to retrieve the original password.
   #
   def password_clean
     crypted_password.decrypt(salt)
