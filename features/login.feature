@@ -15,6 +15,7 @@ Feature: New feature
     And I fill in 'hides' for 'password'
     And I press 'Sign In'
     Then I should see 'Dashboard'
+    And I should see 'Logout'
 
   Scenario: Logout from admin
     Given I logged in as admin
