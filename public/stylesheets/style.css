@@ -21,6 +21,10 @@ hr {
 
 #header {
   background: #c9deb7;
+  -moz-border-radius-bottomright: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -moz-border-radius-bottomleft: 15px;
+  -webkit-border-bottom-left-radius: 15px;
 }
 
 #header h1{
@@ -316,4 +320,8 @@ ol.print ol {
 }
 label {
   padding-left: 0.5em;
+}
+.justified {
+  text-align: justify;
+  text-justify: newspaper;
 }
