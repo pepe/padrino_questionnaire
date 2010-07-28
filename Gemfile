@@ -14,9 +14,9 @@ gem 'bson_ext'
 
 # Test requirements
 group :test do
-  gem "rspec-core", "2.0.0.beta.17"
-  gem "rspec-expectations", "2.0.0.beta.17"
-  gem "rspec-mocks", "2.0.0.beta.17"
+  gem "rspec-core"
+  gem "rspec-expectations"
+  gem "rspec-mocks"
   gem 'capybara'
   gem 'cucumber'
   gem 'rack-test', :require => 'rack/test', :group => 'test'
