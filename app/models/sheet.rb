@@ -52,7 +52,7 @@ class Sheet
       attribute = attribute.to_s
       {'min' => Sheet.min(attribute),
        'max' => Sheet.max(attribute),
-       'avg' => Sheet.sum(attribute)/Sheet.count}
+       'avg' => Sheet.avg(attribute)}
     end
   end
 
@@ -61,7 +61,7 @@ class Sheet
     self.started_at = Time.now
   end
 
-  # finishs questionnaire
+  # finishes questionnaire
   def finish
     self.finished_at = Time.now
     self.save

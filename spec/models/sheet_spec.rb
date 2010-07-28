@@ -2,7 +2,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper.rb')
 describe "Sheet Model" do
-  describe "Initialization" do
+  context "Initialization" do
     it "should inialize new sheet" do
       Sheet.new
     end
@@ -18,7 +18,7 @@ describe "Sheet Model" do
     end
   end
 
-  describe "Filling methods" do
+  context "Filling methods" do
     before(:each) do
       @sheet = Sheet.start_new
     end
@@ -77,7 +77,7 @@ describe "Sheet Model" do
     end
   end
 
-  describe "Views" do
+  context "Views" do
     before(:all) do
       random_sheets
     end
@@ -92,7 +92,7 @@ describe "Sheet Model" do
     end
   end
   
-  describe "Statistics" do
+  context "Statistics" do
     before(:all) do
       random_sheets(:amount => 5)
     end
