@@ -113,6 +113,7 @@ describe "Sheet Model" do
         stats[3.0].should == 1
         stats[4.0].should == 1
         stats[5.0].should be_nil
+        stats[:all].should == 5
       }
       stats = Sheet.sumas_for(:relation)
       stats.should_not be_nil

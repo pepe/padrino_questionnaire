@@ -3,9 +3,9 @@ Padquest.controllers :questionnaire do
     def occurence_and_percents(stat)
       res = ''
       @stats[stat].each_pair {|key, value|
-         unless key == 'all'
+         unless key == :all
            res << "<li>%s: %s (%s%%)</li>\n" % 
-             [key, value, (value/@stats[stat]['all'].to_f) *100]
+             [key, value, (value/@stats[stat][:all].to_f) *100]
          end
       }
       return res

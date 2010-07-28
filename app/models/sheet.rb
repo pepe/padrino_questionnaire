@@ -39,9 +39,13 @@ class Sheet
 
     def sumas_for(attribute)
       attribute = attribute.to_s
-      h = {}
-      Sheet.only(attribute).aggregate.map {|a| h[a[attribute]] = a['count'].to_i}
-      return h
+      result = {}
+      result[:all] = Sheet.only(attribute).aggregate.inject(0) do |all, pair|
+        result[pair[attribute]] = pair['count'].to_i
+        all += pair['count'].to_i
+      end
+      
+      return result
     end
 
     def minmax_for(attribute)
