@@ -24,4 +24,4 @@ group :test do
 end
 
 # Padrino
-gem 'padrino'
+gem 'padrino', '=0.9.14'
