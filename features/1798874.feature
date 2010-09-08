@@ -6,7 +6,8 @@ Feature: Create home page with basic information
 
   Scenario: Home page
     Given I visit '/'
-    Then I should see 'Základní informace o dotazníku'
+    Then I should see 'Dotazník návštěvnosti lesa'
+    And I should see 'Základní informace o dotazníku'
     And I should see 'Vážená respondentko/Vážený respondente.'
     And I should see 'Aplikace elektronického sběru dat pomocí webového rozhraní na socio–ekonomický výzkum významnosti rekreační funkce lesa'
 
