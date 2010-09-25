@@ -6,21 +6,21 @@ class Sheet
   field :finished_at, :type => Time
   field :frequency
   field :frequency_other
-  field :purpose_fuel, :type => Integer
-  field :purpose_relaxation, :type => Integer
-  field :purpose_gathering, :type => Integer
-  field :purpose_hobbitry, :type => Integer
+  field :purpose_fuel
+  field :purpose_relaxation
+  field :purpose_gathering
+  field :purpose_hobbitry
   field :favorite_place
-  field :time_spent, :type => Integer
-  field :once_receive, :type => Integer
-  field :once_payment, :type => Integer
-  field :important_ground, :type => Integer
-  field :important_nature, :type => Integer
-  field :important_wood, :type => Integer
-  field :important_gathering, :type => Integer
-  field :important_water, :type => Integer
-  field :important_climate, :type => Integer
-  field :important_health, :type => Integer
+  field :time_spent
+  field :once_receive
+  field :once_payment
+  field :important_ground
+  field :important_nature
+  field :important_wood
+  field :important_gathering
+  field :important_water
+  field :important_climate
+  field :important_health
   field :relation
   field :email
   field :note
