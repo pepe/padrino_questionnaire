@@ -26,9 +26,6 @@ class Sheet
   field :note
 
   named_scope :finished, :where => {:finished_at.exists => true, :started_at.exists => true}, :order_by => 'finished_at'
-  validates_numericality_of :once_payment, :allow_nil => true
-  validates_numericality_of :once_receive, :allow_nil => true
-  validates_numericality_of :time_spent, :allow_nil => true
 
   class << self
     def start_new
