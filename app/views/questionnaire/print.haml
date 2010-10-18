@@ -5,7 +5,7 @@
     .inner
       %p
         ="Začátek: %s" % @sheet.started_at.strftime("%F %T")
-        ="Konec: %s" % @sheet.finished_at.strftime("%F %T")
+        ="Konec: %s" % @sheet.finished_at? ? @sheet.finished_at.strftime("%F %T") : '' #FIXME hot fix for printing without finished_at
       %ol.print
         %li
           = "Jak často navštěvujete les v průměru ročně: %s" % @sheet.frequency
