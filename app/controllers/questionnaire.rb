@@ -15,6 +15,7 @@ Padquest.controllers :questionnaire do
       ['---'] + (1..5).to_a.reverse
     end
   end
+
   get :index, :map => "/" do
     sheet = Sheet.start_new
     sheet.save
@@ -67,6 +68,7 @@ Padquest.controllers :questionnaire do
   end
   
   get :stats, :map => '/stats' do
+    #FIXME move model method all_stats
     @stats = {:frequency => Sheet.sumas_for(:frequency),
               :purpose_relaxation => Sheet.sumas_for(:purpose_relaxation),
               :purpose_fuel => Sheet.sumas_for(:purpose_fuel),

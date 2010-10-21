@@ -7,4 +7,4 @@
       %ol.sheets
         - @sheets.each do |sheet|
           %li.sheet
-            = "%s vyplněn v %s" % [link_to(sheet.id, '/print/' + sheet.id), sheet.started_at.strftime("%F %T")]
+            = "%s vyplněn v %s" % [link_to(sheet.id, '/print/' + sheet.id.to_s), sheet.started_at.strftime("%F %T")]

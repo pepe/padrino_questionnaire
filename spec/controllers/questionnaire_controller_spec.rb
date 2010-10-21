@@ -13,7 +13,7 @@ describe "QuestionnaireController" do
     before(:each) do
       @sheet = Sheet.start_new
       @sheet.save
-      @uid = @sheet.id
+      @uid = @sheet.id.to_s
     end
 
     it "should render first part of form" do
@@ -71,7 +71,7 @@ describe "QuestionnaireController" do
         "purpose_gathering" => 5,
         "once_payment" => 10})
       @sheet.finish
-      @uid = @sheet.id
+      @uid = @sheet.id.to_s
     end
 
     it "should show printable version of what was filled" do

@@ -31,7 +31,6 @@ describe "AccountsController" do
       last_response.should be_redirect
     end
     it "should render edit when account invalid" do
-      Account.should_receive(:find).with(:first, {:conditions=>{:email=>nil}}).and_return(nil)
       post '/admin/accounts/create', {}
       last_response.should be_ok
     end
@@ -56,7 +55,6 @@ describe "AccountsController" do
     end
     it "should render edit when account invalid" do
       Account.should_receive(:find).with("1").and_return(Account.new)
-      Account.should_receive(:find).with(:first, {:conditions=>{:email=>nil}}).and_return(nil)
       put '/admin/accounts/update/1'
       last_response.should be_ok
     end

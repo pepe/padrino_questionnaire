@@ -60,21 +60,6 @@ describe "Sheet Model" do
       @sheet.update_attributes({:email => 'no@on.cz'})
       @sheet.update_attributes({:note => 'note'})
     end
-    it "should validate numericality of once_payment" do
-      sheet = Sheet.new(:once_payment => 'a')
-      sheet.should_not be_valid
-      sheet.errors[:once_payment].should_not be_nil
-    end
-    it "should validate numericality of once_receive" do
-      sheet = Sheet.new(:once_receive => 'a')
-      sheet.should_not be_valid
-      sheet.errors[:once_receive].should_not be_nil
-    end
-    it "should validate numericality of time_spent" do
-      sheet = Sheet.new(:time_spent => 'a')
-      sheet.should_not be_valid
-      sheet.errors[:time_spent].should_not be_nil
-    end
   end
 
   context "Views" do
@@ -88,7 +73,7 @@ describe "Sheet Model" do
     end
     it "should return all finished ordered by finish time" do
       @sheets = Sheet.finished
-      @sheets.sort{|a,b| a.finished_at <=> b.finished_at}.map{|q| q.id}.should == @sheets.map{|q| q.id}
+      @sheets.sort{|a,b| a.finished_at <=> b.finished_at}.map{|q| q.id}.should =~ @sheets.map{|q| q.id}
     end
   end
   
@@ -97,24 +82,23 @@ describe "Sheet Model" do
       random_sheets(:amount => 5)
     end
 
-    it "should compute occurences of range attributes" do
+    it "should compute occurences of frequency" do
       stats = Sheet.sumas_for(:frequency)
       stats.should_not be_nil
       stats['none'].should == 3
       stats['yearly'].should == 2
-      %w(purpose_hobbitry purpose_gathering purpose_relaxation
-      purpose_fuel important_nature important_wood important_gathering 
-      important_water important_climate important_health
-      important_ground).each {|attribute|
-        stats = Sheet.sumas_for(attribute.to_sym)
-        stats.should_not be_nil
-        stats[1.0].should == 2
-        stats[2.0].should == 1
-        stats[3.0].should == 1
-        stats[4.0].should == 1
-        stats[5.0].should be_nil
-        stats[:all].should == 5
-      }
+    end
+    it "computes occurences of purposes" do
+      stats = Sheet.sumas_for(:purpose_hobbitry)
+      stats.should_not be_nil
+      stats['1'].should == 2
+      stats['2'].should == 1
+      stats['3'].should == 1
+      stats['4'].should == 1
+      stats['5'].should be_nil
+      stats[:all].should == 5
+    end
+    it "computes relation occurences" do
       stats = Sheet.sumas_for(:relation)
       stats.should_not be_nil
       stats['none'].should == 5

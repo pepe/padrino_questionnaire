@@ -46,10 +46,13 @@ class Sheet
     end
 
     def minmax_for(attribute)
-      attribute = attribute.to_s
-      {'min' => Sheet.min(attribute),
-       'max' => Sheet.max(attribute),
-       'avg' => Sheet.avg(attribute)}
+      attribute = attribute.to_sym
+      all = Sheet.only(attribute)
+      all = all.map{|s| s.send(attribute).to_i}.select {|value| value > 0}
+      min, max = all.minmax
+      {'min' => min,
+       'max' => max,
+       'avg' => all.reduce(:+) / all.size}
     end
   end
 
