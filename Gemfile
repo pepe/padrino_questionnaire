@@ -9,19 +9,21 @@ gem 'vlad-git'
 
 # Component requirements
 gem 'haml'
-gem 'mongoid'
-gem 'bson_ext'
+gem 'mongoid', '>=2.0.0.beta.19'
+gem 'bson_ext', '>=1.1.1'
 
 # Test requirements
 group :test do
-  gem "rspec-core"
-  gem "rspec-expectations"
-  gem "rspec-mocks"
+  gem "rspec-core", '~>2.0.0'
+  gem "rspec-expectations", '~>2.0.0'
+  gem "rspec-mocks", '~>2.0.0'
   gem 'capybara'
   gem 'cucumber'
   gem 'rack-test', :require => 'rack/test', :group => 'test'
   gem 'autotest'
+  gem 'ruby-debug19'
+  gem 'autotest-fsevent' if RUBY_PLATFORM.include? "darwin10"
 end
 
 # Padrino
-gem 'padrino', '=0.9.14'
+gem 'padrino', '=0.9.18'
