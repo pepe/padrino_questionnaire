@@ -16,4 +16,4 @@ Feature: Create list of all filled questionnaires
     Given I know 2 questionnaires were filled in
     And I visit '/list'
     When I follow unique code
-    And I should see 'Vyplněný dotazník'
+    Then I should see 'Vyplněný dotazník'

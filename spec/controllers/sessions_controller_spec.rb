@@ -14,14 +14,14 @@ describe "SessionsController" do
     it "should try to authenticate and redirect to /admin" do
       post '/admin/sessions/create', {:email => 'example@example.com', :password => 'secret'}
       last_response.should be_redirect
-      last_response.headers["Location"].should == '/admin/'
+      last_response.headers["Location"].should == 'http://example.org/admin/'
     end
   end
   context "Destroying session" do
     it "should destroy session and redirect to login form" do
       get '/admin/sessions/destroy'
       last_response.should be_redirect
-      last_response.headers["Location"].should == '/admin/sessions/new'
+      last_response.headers["Location"].should == 'http://example.org/admin/sessions/new'
     end
   end
 end

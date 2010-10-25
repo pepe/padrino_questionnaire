@@ -27,3 +27,6 @@ end
 
 # Padrino
 gem 'padrino', '=0.9.18'
+
+# Pepe
+gem 'writeexcel'
