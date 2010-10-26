@@ -74,6 +74,7 @@ describe "QuestionnaireController" do
       @uid = @sheet.id.to_s
     end
 
+    #FIXME remove all should
     it "should show printable version of what was filled" do
       @sheet.finish
       get '/print/' + @uid

@@ -62,7 +62,7 @@ describe "Sheet Model" do
     end
   end
 
-  context "Views" do
+  context "Scopes" do
     before(:all) do
       random_sheets
     end
