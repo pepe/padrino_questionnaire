@@ -66,4 +66,13 @@ class Sheet
     self.finished_at = Time.now
     self.save
   end
+
+  # returns sheet as csv line
+  def to_csv_line
+   [id, started_at, finished_at, frequency, frequency_other, time_spent,
+     purpose_gathering, purpose_hobbitry, purpose_fuel, purpose_relaxation,
+     favorite_place, once_receive, once_payment, important_nature, important_wood,
+     important_gathering, important_water, important_climate, important_health,
+     important_ground, relation].join(',') 
+  end
 end

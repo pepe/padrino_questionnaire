@@ -89,4 +89,9 @@ Padquest.controllers :questionnaire do
     render 'questionnaire/stats'
   end
   
+  get :csv_list, :map => '/list.csv' do
+    headers['Content-type'] = 'text/csv;charset=utf-8'
+    @sheets = Sheet.all
+    render 'questionnaire/csv', :layout => false
+  end
 end

@@ -89,5 +89,10 @@ describe "QuestionnaireController" do
       get '/stats'
       last_response.should be_ok
     end
+
+    it "serves CSV file with all questionnaires" do
+      get '/list.csv'
+      last_response.should be_ok
+    end
   end
 end

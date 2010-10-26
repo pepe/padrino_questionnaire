@@ -4,6 +4,7 @@
 
     .inner
       %h3= "Počet dotazníků v systému: %i" % @sheets.size
+      %h4= link_to 'Stáhnout v CSV', '/list.csv'
       %ol.sheets
         - @sheets.each do |sheet|
           %li.sheet

@@ -121,5 +121,32 @@ describe "Sheet Model" do
       stat['avg'].should == 90
     end
   end
+
+  context "Representations" do
+    it "returns self as csv line separated by ," do
+     @sheet = Sheet.create(
+      {"frequency" => "yearly",
+      "frequency_other" => "jak rikam",
+      "time_spent" => 10,
+      "purpose_gathering" => 1,
+      "purpose_hobbitry" => 2,
+      "purpose_fuel" => 3,
+      "purpose_relaxation" => 4,
+      "favorite_place" => "Jizerské hory",
+      "once_receive" => 100,
+      "once_payment" => 100,
+      "important_nature" => 5,
+      "important_wood" => 1,
+      "important_gathering" => 2,
+      "important_water" => 3,
+      "important_climate" => 4,
+      "important_health" => 5,
+      "important_ground" => 1,
+      "relation" => "none",
+      "started_at" => "2010-10-26 13:48:07 +0200",
+      "finished_at" => "2010-10-26 13:58:07 +0200"})
+    @sheet.to_csv_line.should == "#{@sheet.id},2010-10-26 13:48:07 +0200,2010-10-26 13:58:07 +0200,yearly,jak rikam,10,1,2,3,4,Jizerské hory,100,100,5,1,2,3,4,5,1,none"
+    end
+  end
   
 end
