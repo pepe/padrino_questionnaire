@@ -68,24 +68,7 @@ Padquest.controllers :questionnaire do
   end
   
   get :stats, :map => '/stats' do
-    #FIXME move model method all_stats
-    @stats = {:frequency => Sheet.sumas_for(:frequency),
-              :purpose_relaxation => Sheet.sumas_for(:purpose_relaxation),
-              :purpose_fuel => Sheet.sumas_for(:purpose_fuel),
-              :purpose_gathering => Sheet.sumas_for(:purpose_gathering),
-              :purpose_hobbitry => Sheet.sumas_for(:purpose_hobbitry),
-              :important_wood => Sheet.sumas_for(:important_wood),
-              :important_nature => Sheet.sumas_for(:important_nature),
-              :important_ground => Sheet.sumas_for(:important_ground),
-              :important_climate => Sheet.sumas_for(:important_climate),
-              :important_gathering => Sheet.sumas_for(:important_gathering),
-              :important_health => Sheet.sumas_for(:important_health),
-              :important_water => Sheet.sumas_for(:important_water),
-              :relation => Sheet.sumas_for(:relation),
-              :time_spent => Sheet.minmax_for(:time_spent),
-              :once_payment => Sheet.minmax_for(:once_payment),
-              :once_receive => Sheet.minmax_for(:once_receive) 
-    }
+    @stats = Sheet.all_stats
     render 'questionnaire/stats'
   end
   

@@ -54,6 +54,27 @@ class Sheet
        'max' => max,
        'avg' => all.reduce(:+) / all.size}
     end
+
+    # returns all stats as hash
+    def all_stats
+      @stats = {:frequency => sumas_for(:frequency),
+                :purpose_relaxation => sumas_for(:purpose_relaxation),
+                :purpose_fuel => sumas_for(:purpose_fuel),
+                :purpose_gathering => sumas_for(:purpose_gathering),
+                :purpose_hobbitry => sumas_for(:purpose_hobbitry),
+                :important_wood => sumas_for(:important_wood),
+                :important_nature => sumas_for(:important_nature),
+                :important_ground => sumas_for(:important_ground),
+                :important_climate => sumas_for(:important_climate),
+                :important_gathering => sumas_for(:important_gathering),
+                :important_health => sumas_for(:important_health),
+                :important_water => sumas_for(:important_water),
+                :relation => sumas_for(:relation),
+                :time_spent => minmax_for(:time_spent),
+                :once_payment => minmax_for(:once_payment),
+                :once_receive => minmax_for(:once_receive) 
+      }
+    end
   end
 
   # starts questionnaire

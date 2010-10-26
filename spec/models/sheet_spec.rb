@@ -3,15 +3,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper.rb')
 describe "Sheet Model" do
   context "Initialization" do
-    it "should inialize new sheet" do
+    it "inializes new sheet" do
       Sheet.new
     end
-    it "should have timestamps" do
+    it "has timestamps" do
       sheet = Sheet.new
       sheet.save
       sheet.created_at.should < Time.now
     end
-    it "should have class method for starting new sheet" do
+    it "has class method for starting new sheet" do
       sheet = Sheet.start_new
       sheet.should_not be_nil
       sheet.started_at.should < Time.now
@@ -23,21 +23,21 @@ describe "Sheet Model" do
       @sheet = Sheet.start_new
     end
     
-    it "should have start method" do
+    it "has method for starting" do
       @sheet.start
       @sheet.started_at.should be_an_instance_of(Time)
       @sheet.started_at.should < Time.now + 100
     end
-    it "should have finish method" do
+    it "has method for finishing" do
       @sheet.finish
       @sheet.finished_at.should_not be_nil
     end
-    it "should finish itself and save to db" do
+    it "saves to db after finishing itself" do
       @sheet.finish
       id = @sheet.id
       Sheet.find(id).finished_at.should_not be_nil
     end
-    it "should be filled with form hash" do
+    it "is filled with form hash" do
       @sheet.update_attributes(
         {"frequency" => "vůbec",
         "frequency_other" => "jak rikam",
@@ -82,7 +82,7 @@ describe "Sheet Model" do
       random_sheets(:amount => 5)
     end
 
-    it "should compute occurences of frequency" do
+    it "computes occurences of frequency" do
       stats = Sheet.sumas_for(:frequency)
       stats.should_not be_nil
       stats['none'].should == 3
@@ -103,7 +103,7 @@ describe "Sheet Model" do
       stats.should_not be_nil
       stats['none'].should == 5
     end
-    it "should compute min/max/average for value attributes" do
+    it "computes min/max/average for value attributes" do
       stat = Sheet.minmax_for(:time_spent)
       stat.should_not be_nil
       stat['min'].should == 10
@@ -119,6 +119,26 @@ describe "Sheet Model" do
       stat['min'].should == 30
       stat['max'].should == 150
       stat['avg'].should == 90
+    end
+    it "returns all stats as hash" do
+      @stats = Sheet.all_stats     
+      @stats.should == {
+        :frequency=>{"yearly"=>2, "none"=>3, :all=>5},
+        :purpose_relaxation=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :purpose_fuel=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :purpose_gathering=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :purpose_hobbitry=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :important_wood=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :important_nature=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :important_ground=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :important_climate=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :important_gathering=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :important_health=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :important_water=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+        :relation=>{"none"=>5, :all=>5},
+        :time_spent=>{"min"=>10, "max"=>50, "avg"=>30},
+        :once_payment=>{"min"=>30, "max"=>150, "avg"=>90},
+        :once_receive=>{"min"=>20, "max"=>100, "avg"=>60}}
     end
   end
 
