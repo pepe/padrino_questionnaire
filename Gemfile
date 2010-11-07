@@ -21,12 +21,7 @@ group :test do
   gem 'cucumber'
   gem 'rack-test', :require => 'rack/test', :group => 'test'
   gem 'autotest'
-  gem 'ruby-debug19'
-  gem 'autotest-fsevent' if RUBY_PLATFORM.include? "darwin10"
 end
 
 # Padrino
 gem 'padrino', '=0.9.18'
-
-# Pepe
-gem 'writeexcel'
