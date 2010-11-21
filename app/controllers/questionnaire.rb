@@ -45,7 +45,7 @@ Padquest.controllers :questionnaire do
     @sheet.finish
     redirect "/thanks/#{params[:uid]}"
   end
-  
+
   get :thanks, :map => '/thanks/:uid' do
     @sheet = Sheet.find(params[:uid])
     render 'questionnaire/thanks'
@@ -66,12 +66,12 @@ Padquest.controllers :questionnaire do
     @sheets = Sheet.finished
     render 'questionnaire/list'
   end
-  
+
   get :stats, :map => '/stats' do
     @stats = Sheet.all_stats
     render 'questionnaire/stats'
   end
-  
+
   get :csv_list, :map => '/list.csv' do
     headers['Content-type'] = 'text/csv;charset=utf-8'
     @sheets = Sheet.all
