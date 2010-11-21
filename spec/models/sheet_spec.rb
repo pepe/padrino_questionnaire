@@ -63,7 +63,8 @@ describe "Sheet Model" do
 
   describe "Scopes" do
     before(:all) do
-      random_sheets
+      create_random_sheets
+      create_not_finished_sheet
     end
 
     it "should return all finished " do
@@ -78,7 +79,8 @@ describe "Sheet Model" do
 
   describe "Statistics" do
     before(:all) do
-      random_sheets(:amount => 5)
+      create_random_sheets(:amount => 5)
+      create_not_finished_sheet
     end
 
     describe '#sumas_for' do

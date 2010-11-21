@@ -37,7 +37,7 @@ class Sheet
     def sumas_for(attribute)
       attribute = attribute.to_s
       result = {}
-      result[:all] = Sheet.only(attribute).aggregate.inject(0) do |all, pair|
+      result[:all] = Sheet.finished.only(attribute).aggregate.inject(0) do |all, pair|
         result[pair[attribute]] = pair['count'].to_i
         all += pair['count'].to_i
       end
@@ -47,7 +47,7 @@ class Sheet
 
     def minmax_for(attribute)
       attribute = attribute.to_sym
-      all = Sheet.only(attribute)
+      all = Sheet.finished.only(attribute)
       all = all.map{|s| s.send(attribute).to_i}.select {|value| value > 0}
       min, max = all.minmax
       {'min' => min,

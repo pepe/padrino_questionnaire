@@ -14,7 +14,7 @@ def app
   # Padquest.tap { |app|  }
 end
 
-def random_sheets(options = {})
+def create_random_sheets(options = {})
   Sheet.destroy_all
   (options[:amount] || 2).times {|i|
     Sheet.create(
@@ -40,6 +40,30 @@ def random_sheets(options = {})
       "finished_at" => Time.now - (i*60)
     })
   }
+end
+
+def create_not_finished_sheet
+  Sheet.create(
+    {"frequency" => "yearly",
+    "frequency_other" => "jak rikam",
+    "time_spent" => 10,
+    "purpose_gathering" => 1,
+    "purpose_hobbitry" => 1,
+    "purpose_fuel" => 1,
+    "purpose_relaxation" => 1,
+    "favorite_place" => "Jizerské hory",
+    "once_receive" => 20,
+    "once_payment" => 30,
+    "important_nature" => 1,
+    "important_wood" => 1,
+    "important_gathering" => 1,
+    "important_water" => 1,
+    "important_climate" => 1,
+    "important_health" => 1,
+    "important_ground" => 1,
+    "relation" => "none",
+    "started_at" => Time.now
+  })
 end
 
 # returns mocked account
