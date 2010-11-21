@@ -5,7 +5,7 @@ Padquest.controllers :questionnaire do
       @stats[stat].each_pair {|key, value|
          unless key == :all
            res << "<li>%s: %s (%s%%)</li>\n" % 
-             [key, value, (value/@stats[stat][:all].to_f) *100]
+             [key, value, ((value/@stats[stat][:all].to_f) * 100 + 0.5).floor]
          end
       }
       return res

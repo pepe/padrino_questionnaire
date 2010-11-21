@@ -9,8 +9,11 @@ Feature: Create page with simple statistics
     When I visit '/stats'
     Then I should see 'Statistika dotazníku'
     And I should see 'Jak často navštěvujete les v průměru ročně'
-    And I should see 'none:' followed by number
+    And I should see 'none: 2 (100%)'
     And I should see 'Jak dlouhou dobu obvykle trávíte návštěvou lesa?'
+    And I should see 'min: 10'
+    And I should see 'max: 10'
+    And I should see 'avg: 10'
     And I should see 'Za jakým účelem obvykle navštěvujete les'
     And I should see 'pro duševní a fyzickou relaxaci, rekreaci'
     And I should see 'pro zájmovou činnost (sport, příroda, myslivost, poznávání apod.)'
