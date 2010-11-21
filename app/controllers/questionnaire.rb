@@ -1,15 +1,5 @@
 Padquest.controllers :questionnaire do
   helpers do
-    def occurence_and_percents(stat)
-      res = ''
-      @stats[stat].each_pair {|key, value|
-         unless key == :all
-           res << "<li>%s: %s (%s%%)</li>\n" % 
-             [key, value, ((value/@stats[stat][:all].to_f) * 100 + 0.5).floor]
-         end
-      }
-      return res
-    end
     # returns options for select
     def num_options(count = 5)
       ['---'] + (1..5).to_a.reverse
@@ -55,26 +45,5 @@ Padquest.controllers :questionnaire do
     @sheet = Sheet.find(params[:uid])
     @sheet.update_attributes(params['questionnaire'])
     redirect '/'
-  end
-
-  get :print, :map => '/print/:uid' do 
-    @sheet = Sheet.find(params[:uid])
-    render 'questionnaire/print'
-  end
-
-  get :list, :map => '/list' do
-    @sheets = Sheet.finished
-    render 'questionnaire/list'
-  end
-
-  get :stats, :map => '/stats' do
-    @stats = Sheet.all_stats
-    render 'questionnaire/stats'
-  end
-
-  get :csv_list, :map => '/list.csv' do
-    headers['Content-type'] = 'text/csv;charset=utf-8'
-    @sheets = Sheet.all
-    render 'questionnaire/csv', :layout => false
   end
 end
