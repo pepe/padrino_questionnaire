@@ -1,5 +1,3 @@
-# Helper methods defined here can be accessed in any controller or view in the application
-
 Padquest.helpers do
   def occurence_and_percents(stat)
     res = ''

@@ -1,7 +1,6 @@
-# Helper methods defined here can be accessed in any controller or view in the application
-
 Padquest.helpers do
-  # def simple_helper_method
-  #  ...
-  # end
+  # returns options for select
+  def num_options(count = 5)
+    ['---'] + (1..5).to_a.reverse
+  end
 end
