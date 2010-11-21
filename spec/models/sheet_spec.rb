@@ -2,7 +2,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper.rb')
 describe "Sheet Model" do
-  context "Initialization" do
+  describe "Initialization" do
     it "inializes new sheet" do
       Sheet.new
     end
@@ -13,12 +13,11 @@ describe "Sheet Model" do
     end
     it "has class method for starting new sheet" do
       sheet = Sheet.start_new
-      sheet.should_not be_nil
       sheet.started_at.should < Time.now
     end
   end
 
-  context "Filling methods" do
+  describe "Filling methods" do
     before(:each) do
       @sheet = Sheet.start_new
     end
@@ -62,7 +61,7 @@ describe "Sheet Model" do
     end
   end
 
-  context "Scopes" do
+  describe "Scopes" do
     before(:all) do
       random_sheets
     end
@@ -76,69 +75,61 @@ describe "Sheet Model" do
       @sheets.sort{|a,b| a.finished_at <=> b.finished_at}.map{|q| q.id}.should =~ @sheets.map{|q| q.id}
     end
   end
-  
-  context "Statistics" do
+
+  describe "Statistics" do
     before(:all) do
       random_sheets(:amount => 5)
     end
 
-    it "computes occurences of frequency" do
-      stats = Sheet.sumas_for(:frequency)
-      stats.should_not be_nil
-      stats['none'].should == 3
-      stats['yearly'].should == 2
+    describe '#sumas_for' do
+      it "computes occurences of frequency" do
+        stats = Sheet.sumas_for(:frequency)
+        stats.should == {'none' => 3, 'yearly' => 2, :all => 5}
+      end
+      it "computes occurences of purposes" do
+        stats = Sheet.sumas_for(:purpose_hobbitry)
+        stats.should == {'1' => 2, '2' => 1, '3' => 1, '4' => 1, :all => 5}
+      end
+      it "computes relation occurences" do
+        stats = Sheet.sumas_for(:relation)
+        stats['none'].should == 5
+      end
     end
-    it "computes occurences of purposes" do
-      stats = Sheet.sumas_for(:purpose_hobbitry)
-      stats.should_not be_nil
-      stats['1'].should == 2
-      stats['2'].should == 1
-      stats['3'].should == 1
-      stats['4'].should == 1
-      stats['5'].should be_nil
-      stats[:all].should == 5
+    describe "#minmax_for" do
+      it "computes min/max/average for time spent" do
+        stat = Sheet.minmax_for(:time_spent)
+        stat.should == {'min' => 10, 'max' => 50, 'avg' => 30}
+      end
+      it "computes min/max/average for once receive" do
+        stat = Sheet.minmax_for(:once_receive)
+        stat.should == {'min' => 20, 'max' => 100, 'avg' => 60}
+      end
+      it "computes min/max/average for once payment" do
+        stat = Sheet.minmax_for(:once_payment)
+        stat.should == {'min' => 30, 'max' => 150, 'avg' => 90}
+      end
     end
-    it "computes relation occurences" do
-      stats = Sheet.sumas_for(:relation)
-      stats.should_not be_nil
-      stats['none'].should == 5
-    end
-    it "computes min/max/average for value attributes" do
-      stat = Sheet.minmax_for(:time_spent)
-      stat.should_not be_nil
-      stat['min'].should == 10
-      stat['max'].should == 50
-      stat['avg'].should == 30
-      stat = Sheet.minmax_for(:once_receive)
-      stat.should_not be_nil
-      stat['min'].should == 20
-      stat['max'].should == 100
-      stat['avg'].should == 60
-      stat = Sheet.minmax_for(:once_payment)
-      stat.should_not be_nil
-      stat['min'].should == 30
-      stat['max'].should == 150
-      stat['avg'].should == 90
-    end
-    it "returns all stats as hash" do
-      @stats = Sheet.all_stats     
-      @stats.should == {
-        :frequency=>{"yearly"=>2, "none"=>3, :all=>5},
-        :purpose_relaxation=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :purpose_fuel=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :purpose_gathering=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :purpose_hobbitry=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :important_wood=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :important_nature=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :important_ground=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :important_climate=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :important_gathering=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :important_health=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :important_water=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
-        :relation=>{"none"=>5, :all=>5},
-        :time_spent=>{"min"=>10, "max"=>50, "avg"=>30},
-        :once_payment=>{"min"=>30, "max"=>150, "avg"=>90},
-        :once_receive=>{"min"=>20, "max"=>100, "avg"=>60}}
+    describe "#all_stats" do
+      it "returns all stats as hash" do
+        @stats = Sheet.all_stats
+        @stats.should == {
+          :frequency=>{"yearly"=>2, "none"=>3, :all=>5},
+          :purpose_relaxation=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :purpose_fuel=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :purpose_gathering=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :purpose_hobbitry=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :important_wood=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :important_nature=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :important_ground=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :important_climate=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :important_gathering=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :important_health=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :important_water=>{"4"=>1, "1"=>2, "2"=>1, "3"=>1, :all=>5},
+          :relation=>{"none"=>5, :all=>5},
+          :time_spent=>{"min"=>10, "max"=>50, "avg"=>30},
+          :once_payment=>{"min"=>30, "max"=>150, "avg"=>90},
+          :once_receive=>{"min"=>20, "max"=>100, "avg"=>60}}
+      end
     end
   end
 
@@ -168,5 +159,4 @@ describe "Sheet Model" do
     @sheet.to_csv_line.should == "#{@sheet.id},2010-10-26 13:48:07 +0200,2010-10-26 13:58:07 +0200,yearly,jak rikam,10,1,2,3,4,Jizerské hory,100,100,5,1,2,3,4,5,1,none"
     end
   end
-  
 end
