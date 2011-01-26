@@ -42,13 +42,13 @@ Then /^I should see '(.+)' followed by number$/ do |text|
   page.should have_xpath('//*', :text => regexp)
 end
 When /^I follow unique code$/ do
-  find(:css, 'li a').click 
+  find(:css, 'li a').click
 end
 Given /^I know 2 questionnaires were filled in$/ do
   Sheet.destroy_all
   2.times {Given "I fill in both parts of questionnaire"}
 end
-When /^I follow first sheet detail$/ do 
+When /^I follow first sheet detail$/ do
   find(:css, 'table.table td.first a').click
 end
 Given /^I know 2 questionnaires were just started$/ do
@@ -60,18 +60,22 @@ end
 Then /^file should have (\d+) lines$/ do |count|
   page.body.lines.to_a.size.should == count.to_i
 end
-Then /^line should have (\d+) items separated by '(.*)'$/ do |count, separator|
-  page.body.lines.first.split(',').size.should == count.to_i
+Then /^line should have (\d+) items separated by ';'$/ do |count|
+  lines[1].split(';').size.should == count.to_i
 end
 Then /^(\d+)\. item should be uniq code$/ do |order|
   regexp = Regexp.new(/\b[0-9a-f]{24}\b/)
-  page.body.lines.first.split(',').first.should match(regexp)
+  lines[1].split(';').first.should match(regexp)
 end
 Then /^(\d+)\. item should be date$/ do |order|
   regexp = Regexp.new(/\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2} \+\d{4}/)
-  page.body.lines.first.split(',')[order.to_i-1].should match regexp
+  lines[1].split(';')[order.to_i-1].should match regexp
 end
 Then /^(\d+)\. item should be number$/ do |order|
   regexp = Regexp.new(/\d*/)
-  page.body.lines.first.split(',')[order.to_i-1].should match regexp
+  lines[1].split(';')[order.to_i-1].should match regexp
+end
+
+def lines
+  page.body.lines.to_a
 end

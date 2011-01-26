@@ -36,7 +36,7 @@ describe "QutputsController" do
     end
 
     it "renders list of all filled in questionnaires" do
-      get '/list'     
+      get '/list'
       last_response.should be_ok
     end
 
