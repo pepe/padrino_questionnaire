@@ -41,7 +41,7 @@ class Sheet
         result[pair[attribute]] = pair['count'].to_i
         all += pair['count'].to_i
       end
-      
+
       return result
     end
 
@@ -72,7 +72,7 @@ class Sheet
                 :relation => sumas_for(:relation),
                 :time_spent => minmax_for(:time_spent),
                 :once_payment => minmax_for(:once_payment),
-                :once_receive => minmax_for(:once_receive) 
+                :once_receive => minmax_for(:once_receive)
       }
     end
   end
@@ -94,6 +94,6 @@ class Sheet
      purpose_gathering, purpose_hobbitry, purpose_fuel, purpose_relaxation,
      favorite_place, once_receive, once_payment, important_nature, important_wood,
      important_gathering, important_water, important_climate, important_health,
-     important_ground, relation].join(',') 
+     important_ground, relation].map{|field| %("#{field}")}.join(';')
   end
 end

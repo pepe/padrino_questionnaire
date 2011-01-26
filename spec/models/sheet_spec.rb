@@ -21,7 +21,7 @@ describe "Sheet Model" do
     before(:each) do
       @sheet = Sheet.start_new
     end
-    
+
     it "has method for starting" do
       @sheet.start
       @sheet.started_at.should be_an_instance_of(Time)
@@ -158,7 +158,7 @@ describe "Sheet Model" do
       "relation" => "none",
       "started_at" => "2010-10-26 13:48:07 +0200",
       "finished_at" => "2010-10-26 13:58:07 +0200"})
-    @sheet.to_csv_line.should == "#{@sheet.id},2010-10-26 13:48:07 +0200,2010-10-26 13:58:07 +0200,yearly,jak rikam,10,1,2,3,4,Jizerské hory,100,100,5,1,2,3,4,5,1,none"
+    @sheet.to_csv_line.should == %("#{@sheet.id}";"2010-10-26 13:48:07 +0200";"2010-10-26 13:58:07 +0200";"yearly";"jak rikam";"10";"1";"2";"3";"4";"Jizerské hory";"100";"100";"5";"1";"2";"3";"4";"5";"1";"none")
     end
   end
 end
